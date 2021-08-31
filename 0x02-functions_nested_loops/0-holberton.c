@@ -1,19 +1,19 @@
 #include "main.h"
+
 /**
- * main - Print "Holberton" followed by a new line.
- * Description: You are not allowed to include standard libraries.
+ * main - function to print
+ *
  * Return: 0
  */
 int main(void)
 {
-  char holberton[] = "Holberton";
-  int i = 0;
+	char holberton[9] = {'H', 'o', 'l', 'b', 'e', 'r', 't', 'o', 'n'};
+	unsigned int c;
 
-  while (holberton[i] != '\0')
-  {
-    _putchar(holberton[i]);
-    i++;
-  }
-  _putchar('\n');
-
-  return (0);
+	for (c = 0; c < sizeof(holberton); c++)
+	{
+		_putchar(holberton[c]);
+	}
+_putchar('\n');
+return (0);
+}
