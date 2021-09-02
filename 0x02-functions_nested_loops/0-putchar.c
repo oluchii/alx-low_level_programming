@@ -1,20 +1,20 @@
 #include "main.h"
+
 /**
-* main - Print "Holberton" followed by a new line.
-* Description: You are not allowed to include standard libraries.
-* Return: 0
+* main - Prints "Holberton" followed by a new line.
+* Return: Always 0.
 */
 int main(void)
 {
-char [] = "_putchar";
-int i = 0;
-
-while (_putchar[i] != '\0')
-{
-putchar(_putchar[i]);
-i++;
-}
-putchar('\n');
+_putchar('_');
+_putchar('p');
+_putchar('u');
+_putchar('t');
+_putchar('c');
+_putchar('h');
+_putchar('a');
+_putchar('r');
+_putchar('\n');
 
 return (0);
 }
