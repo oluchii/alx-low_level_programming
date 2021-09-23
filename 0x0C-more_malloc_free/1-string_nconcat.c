@@ -1,19 +1,20 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * string_nconcat - concatenates two strings.
- * @s1: first string.
- * @s2: second string.
- * @n: number of bytes.
- * Return: pointer to the allocated memory.
- * if malloc fails, status value is equal to 98.
+ * string_nconcat - Concatenates two strings using at
+ *                  most an inputted number of bytes.
+ * @s1: The first string.
+ * @s2: The second string.
+ * @n: The maximum number of bytes of s2 to concatenate to s1.
+ *
+ * Return: If the function fails - NULL.
+ *         Otherwise - a pointer to the concatenated space in memory.
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *sout;
-	unsigned int a1, a2, aout, i;
+	char *concat;
+	unsigned int len = n, index;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -21,29 +22,23 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	for (a1 = 0; s1[a1] != '\0'; a1++)
-		;
+	for (index = 0; s1[index]; index++)
+		len++;
 
-	for (a2 = 0; s2[a2] != '\0'; a2++)
-		;
+	concat = malloc(sizeof(char) * (len + 1));
 
-	if (n >= a2)
-		n = a2;
-
-	aout = a1 + n;
-
-	sout = malloc(aout + 1);
-
-	if (sout == NULL)
+	if (concat == NULL)
 		return (NULL);
 
-	for (i = 0; i < aout; i++)
-		if (i < a1)
-			sout[i] = s1[i];
-		else
-			sout[i] = s2[i - a1];
+	len = 0;
 
-	sout[i] = '\0';
+	for (index = 0; s1[index]; index++)
+		concat[len++] = s1[index];
 
-	return (sout);
+	for (index = 0; s2[index] && index < n; index++)
+		concat[len++] = s2[index];
+
+	concat[len] = '\0';
+
+	return (concat);
 }
