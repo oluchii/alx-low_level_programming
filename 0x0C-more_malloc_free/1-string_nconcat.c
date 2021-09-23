@@ -1,49 +1,49 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
-* string_nconcat - concatenates two strings
-* @s1: string 1
-* @s2: to be added to end of s1
-* @n: number of bytes to be concatenated
-*
-* Return: pointer to new string containg s1 followed by n bytes of s2
-* and null terminated
-*/
+ * string_nconcat - concatenates two strings.
+ * @s1: first string.
+ * @s2: second string.
+ * @n: number of bytes.
+ * Return: pointer to the allocated memory.
+ * if malloc fails, status value is equal to 98.
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-char *ptr;
-unsigned int size1 = 0, size2 = 0, i, j;
+	char *sout;
+	unsigned int a1, a2, aout, i;
 
-if (s1 == NULL)
-s1 = "";
+	if (s1 == NULL)
+		s1 = "";
 
-if (s2 == NULL)
-s2 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-while (s1[size1] != '\0')
-size1++;
+	for (a1 = 0; s1[a1] != '\0'; a1++)
+		;
 
-while (s2[size2] != '\0')
-size2++;
+	for (a2 = 0; s2[a2] != '\0'; a2++)
+		;
 
-ptr = malloc(sizeof(char) * (size1 + n + 1));
+	if (n >= a2)
+		n = a2;
 
-if (ptr == NULL)
-return (NULL);
+	aout = a1 + n;
 
-for (i = 0; i < size1; i++)
-ptr[i] = s1[i];
+	sout = malloc(aout + 1);
 
-if (n >= size2)
-n = size2;
+	if (sout == NULL)
+		return (NULL);
 
-for (j = 0; j < n; j++)
-{
-ptr[i] = s2[j];
-i++;
-}
+	for (i = 0; i < aout; i++)
+		if (i < a1)
+			sout[i] = s1[i];
+		else
+			sout[i] = s2[i - a1];
 
-ptr[i] = '\0';
-return (ptr);
+	sout[i] = '\0';
+
+	return (sout);
 }
