@@ -28,21 +28,15 @@ for (a2 = 0; s2[a2] != '\0'; a2++)
 
 if (n >= a2)
 n = a2;
-
 aout = a1 + n;
-
 sout = malloc(aout + 1);
-
 if (sout == NULL)
 return (NULL);
-
 for (i = 0; i < aout; i++)
 if (i < a1)
 sout[i] = s1[i];
 else
 sout[i] = s2[i - a1];
-
 sout[i] = '\0';
-
 return (sout);
 }
